@@ -1,0 +1,18 @@
+{
+  "_nota": "Esempio. Codex lo compila con le risposte dell'intervista. location_linkedin SEMPRE nel formato 'Città, Italy'.",
+  "sites": ["linkedin", "indeed"],
+  "country_indeed": "italy",
+  "location_linkedin": "Milano, Italy",
+  "location_indeed": "Milano",
+  "hours_old": 24,
+  "results_per_search": 20,
+  "max_searches_per_run": 4,
+  "pause_between_searches_seconds": [20, 45],
+  "max_run_seconds": 600,
+  "searches": [
+    { "term": "data analyst" },
+    { "term": "analista dati" },
+    { "term": "business analyst", "location_linkedin": "Roma, Italy", "location_indeed": "Roma" },
+    { "_nota": "esempio ricerca da remoto in tutta Italia", "term": "data analyst remote", "location_linkedin": "Italy", "location_indeed": "Italia" }
+  ]
+}

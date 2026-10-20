@@ -1,0 +1,22 @@
+# Dati personali di Enrico: non devono MAI finire su GitHub
+profilo/
+career-ops/
+
+# Varie
+.DS_Store
+*.log
+__pycache__/
+.venv*/
+
+# Documenti personali messi per errore fuori da profilo/
+*.pdf
+*.doc
+*.docx
+*.odt
+*.jpg
+*.jpeg
+*.png
+*.heic
+.env
+.env.*
+.codex/

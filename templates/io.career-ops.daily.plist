@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  Automazione giornaliera su Mac.
+  1. Sostituisci PERCORSO_CAREER_OPS con il percorso completo della cartella career-ops
+     (es. /Users/enrico/job-scraper-per-enrico/career-ops) e l'orario se diverso dalle 9:00.
+     La cartella NON deve stare in Scrivania, Documenti, Download o iCloud: macOS bloccherebbe il job.
+     Se il Mac è in stop all'orario previsto il job parte al risveglio; se è spento, quel giorno salta.
+  2. Copia in ~/Library/LaunchAgents/io.career-ops.daily.plist
+  3. launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/io.career-ops.daily.plist
+  Disattivare: launchctl bootout gui/$(id -u)/io.career-ops.daily
+  Lanciare subito (prova): launchctl kickstart gui/$(id -u)/io.career-ops.daily
+-->
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>io.career-ops.daily</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/zsh</string>
+    <string>-lc</string>
+    <string>'PERCORSO_CAREER_OPS/local/daily.sh'</string>
+  </array>
+  <key>WorkingDirectory</key>
+  <string>PERCORSO_CAREER_OPS</string>
+  <key>StartCalendarInterval</key>
+  <dict>
+    <key>Hour</key>
+    <integer>9</integer>
+    <key>Minute</key>
+    <integer>0</integer>
+  </dict>
+  <key>StandardOutPath</key>
+  <string>PERCORSO_CAREER_OPS/data/launchd.log</string>
+  <key>StandardErrorPath</key>
+  <string>PERCORSO_CAREER_OPS/data/launchd.log</string>
+</dict>
+</plist>

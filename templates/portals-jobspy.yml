@@ -1,0 +1,17 @@
+# Blocco da aggiungere dentro "tracked_companies:" in career-ops/portals.yml.
+# Verifica la sintassi attuale in career-ops/docs/local-parser-cookbook.md prima di incollarlo,
+# poi controlla con: node validate-portals.mjs
+#
+# - niente careers_url: se il parser fallisce, career-ops non deve aprire LinkedIn con il browser.
+# - timeout_ms: 20 minuti (il default di career-ops, 20 secondi, è troppo poco per JobSpy).
+#   Deve restare ben sopra max_run_seconds di local/jobspy-searches.json (600 s).
+# - max_buffer_bytes: 8 MB (il default, 2 MB, può non bastare).
+
+  - name: "JobSpy (LinkedIn + Indeed)"
+    scan_method: local_parser
+    parser:
+      command: sh
+      script: local/run-jobspy.sh
+      timeout_ms: 1200000
+      max_buffer_bytes: 8000000
+    enabled: true
